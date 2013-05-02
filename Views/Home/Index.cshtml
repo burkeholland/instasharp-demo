@@ -1,0 +1,52 @@
+﻿@model InstaSharp.Models.Responses.UserResponse
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (ViewBag.Authenticated)  {
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#">
+                    <img src="@Url.Content("~/Content/images/instasharp-smallish.png")" />
+                </a>
+                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="collapse nav-collapse">
+                    <ul class="nav pull-right">
+                        <li class="dropdown">
+						    <a href="#" class="dropdown-toggle usermenu" data-toggle="dropdown">
+							    <img alt="profile" class="thumb img-circle" src="@Model.Data.ProfilePicture" >
+                                <strong>@Model.Data.Username</strong>
+						    </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="https://instagram.com/accounts/edit/" target="_blank">Profile</a></li>
+                                <li><a href="#/self">Your Photos</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div id="application">
+
+    @if (ViewBag.Authenticated) {
+
+        // load the authenticated partial
+        @Html.Partial("Authenticated");
+
+    } else {
+
+        // load the unauthenticated partial
+        @Html.Partial("Unauthenticated", ViewData);
+    }
+
+</div>

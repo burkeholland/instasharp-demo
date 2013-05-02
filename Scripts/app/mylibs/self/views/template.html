@@ -1,0 +1,19 @@
+﻿<div class="row">
+    <div class="span6 offset3">
+        <h1>Your Feed</h1>
+        <hr />
+    </div>
+</div>
+
+<div data-role="listview" data-bind="source: self" data-template="listview-template"></div>
+
+<div class="row load-more">
+    <div class="span6 offset3">
+        <a class="btn btn-primary" data-bind="invisible: loading, click: more">Load More</a>
+        <div class="progress progress-striped active" data-bind="visible: loading">
+            <div class="bar" style="width: 100%;"></div>
+        </div>
+    </div>
+</div>
+
+

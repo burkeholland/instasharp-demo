@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>InstaSharp</title>
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/bootstrap-responsive.min.css")
+    @Styles.Render("~/Content/kendo/2013.1.319/kendo.common.min.css")
+    @Styles.Render("~/Content/kendo/2013.1.319/kendo.bootstrap.min.css")
+    @Styles.Render("~/Content/font-awesome.min.css")
+    @Styles.Render("~/Content/style.css")
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+
+    <script src="@Url.Content("~/Scripts/require.js")" data-main="@Url.Content("~/Scripts/app/main.js")"></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

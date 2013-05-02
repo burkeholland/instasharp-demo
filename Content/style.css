@@ -1,0 +1,76 @@
+﻿@-webkit-keyframes fadeIn {
+  from {
+    width: 254px;
+  }
+  to {
+    width: 512px;
+  }
+}
+@-moz-keyframes fadeIn {
+  from {
+    width: 254px;
+  }
+  to {
+    width: 512px;
+  }
+}
+@-ms-keyframes fadeIn {
+  from {
+    width: 254px;
+  }
+  to {
+    width: 512px;
+  }
+}
+@-o-keyframes fadeIn {
+  from {
+    width: 254px;
+  }
+  to {
+    width: 512px;
+  }
+}
+@keyframes fadeIn {
+  from {
+    width: 254px;
+  }
+  to {
+    width: 512px;
+  }
+}
+.k-listview {
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.thumb {
+  width: 50px;
+  height: 50px;
+}
+.icon-medium {
+  font-size: 2em;
+}
+.star {
+  color: grey;
+  cursor: pointer;
+}
+.star:hover,
+.star.selected {
+  color: #006dcc;
+}
+.thumbnail-tray {
+  margin: 10px;
+}
+.thumbnail-white {
+  background-color: white;
+}
+.load-more {
+  height: 200px;
+}
+.well {
+  padding: 0px;
+}
+.fadeIn {
+  animation-name: fadeIn;
+  opacity: 1;
+}
