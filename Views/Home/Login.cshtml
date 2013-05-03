@@ -1,0 +1,33 @@
+﻿@using InstaSharp
+@using InstaSharp.Samples.MVC
+
+@{
+    // create the auth url
+    var scopes = new List<OAuth.Scope>();
+    scopes.Add(OAuth.Scope.Basic);
+
+
+    var link = OAuth.AuthLink(InstaSharpConfig.config.OAuthURI + "/authorize", InstaSharpConfig.config.ClientId,
+    InstaSharpConfig.config.RedirectURI, scopes, OAuth.ResponseType.Code);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>InstaSharp</title>
+     @Styles.Render("~/Content/bootstrap.min.css")
+     @Styles.Render("~/Content/bootstrap-responsive.min.css")
+</head>
+<body>
+  
+    <div class="container">
+         <div class="hero-unit">
+            <h2>Athenticate Thyself</h2>
+            <a href="@link" class="button">Authenticate To Instagram</a>
+        </div>
+    </div>
+
+</body>
+</html>

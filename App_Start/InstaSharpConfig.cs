@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InstaSharp.Models.Responses;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace InstaSharp.Samples.MVC
 
         public static bool isAuthenticated = false;
         public static InstaSharp.InstagramConfig config;
-        public static InstaSharp.AuthInfo auth;
+        public static InstaSharp.Models.Responses.OAuthResponse oauthResponse;
 
         public static void Set(HttpContext context)
         {
@@ -21,7 +22,7 @@ namespace InstaSharp.Samples.MVC
 
                 if (isAuthenticated)
                 {
-                    auth = (AuthInfo)context.Session["InstaSharp.AuthInfo"];
+                    oauthResponse = (OAuthResponse)context.Session["InstaSharp.AuthInfo"];
                 }
             }
 

@@ -1,4 +1,6 @@
 ﻿using AttributeRouting.Web.Mvc;
+using InstaSharp.Models;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,31 +12,22 @@ namespace InstaSharp.Samples.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private InstaSharp.Endpoints.Users _users;
-
         [GET("/")]
         public ActionResult Index()
         {
-            InstaSharp.Models.Responses.UserResponse user = null;
-
-            // add the authenticated flag to the View 
-            ViewBag.Authenticated = InstaSharpConfig.isAuthenticated;
-
-            // create the auth url
-            var scopes = new List<InstaSharp.Auth.Scope>();
-            scopes.Add(Auth.Scope.Basic);
-
-            ViewBag.AuthLink = InstaSharp.Auth.AuthLink(InstaSharpConfig.config.OAuthURI + "/authorize", InstaSharpConfig.config.ClientId, 
-                InstaSharpConfig.config.RedirectURI, scopes, Auth.ResponseType.Code);
-
             // if we're authenticated, return the user object with the original request
             if (InstaSharpConfig.isAuthenticated) {
-                _users = new Endpoints.Users(InstaSharpConfig.config, InstaSharpConfig.auth);
-                user = _users.Get();
-            }
+                return View(InstaSharpConfig.oauthResponse.User);
+            } else {
 
-            return View(user);
+                
+
+                return View("Login");
+            }
+             
         }
+
+
 
         [GET("/clear")]
         public ActionResult Clear()

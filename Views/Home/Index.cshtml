@@ -1,10 +1,20 @@
-﻿@model InstaSharp.Models.Responses.UserResponse
+﻿@model InstaSharp.Models.UserInfo
 
-@{
-    ViewBag.Title = "Index";
-}
+<!DOCTYPE html>
 
-@if (ViewBag.Authenticated)  {
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>InstaSharp</title>
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/bootstrap-responsive.min.css")
+    @Styles.Render("~/Content/kendo/2013.1.319/kendo.common.min.css")
+    @Styles.Render("~/Content/kendo/2013.1.319/kendo.bootstrap.min.css")
+    @Styles.Render("~/Content/font-awesome.min.css")
+    @Styles.Render("~/Content/style.css")
+</head>
+<body>
+   
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
@@ -21,8 +31,8 @@
                     <ul class="nav pull-right">
                         <li class="dropdown">
 						    <a href="#" class="dropdown-toggle usermenu" data-toggle="dropdown">
-							    <img alt="profile" class="thumb img-circle" src="@Model.Data.ProfilePicture" >
-                                <strong>@Model.Data.Username</strong>
+							    <img alt="profile" class="thumb img-circle" src="@Model.Profile_Picture" >
+                                <strong>@Model.Username</strong>
 						    </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="https://instagram.com/accounts/edit/" target="_blank">Profile</a></li>
@@ -34,19 +44,10 @@
             </div>
         </div>
     </div>
-}
 
-<div id="application">
+    <div id="application"></div>
 
-    @if (ViewBag.Authenticated) {
+    <script src="@Url.Content("~/Scripts/require.js")" data-main="@Url.Content("~/Scripts/app/main.js")"></script>
 
-        // load the authenticated partial
-        @Html.Partial("Authenticated");
-
-    } else {
-
-        // load the unauthenticated partial
-        @Html.Partial("Unauthenticated", ViewData);
-    }
-
-</div>
+</body>
+</html>

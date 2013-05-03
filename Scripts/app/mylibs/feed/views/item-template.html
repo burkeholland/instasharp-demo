@@ -1,0 +1,65 @@
+﻿<div class="row fadeIn">
+    <div class="span3">
+        <div class="media">
+            <div class="media-object">
+                <a class="pull-right">
+                    <img src="#: user.profile_picture #" class="thumb img-rounded" style="margin-left: 5px" />
+                </a>
+            </div>
+            <div class="media-body">
+                <strong class="pull-right">#: user.username #</strong>
+            </div>
+        </div>
+    </div>
+    <div class="span6 well">
+        <div class="thumbnail thumbnail-white">
+            <img src="#: images.standard_resolution.url #" >
+            <div class="caption">
+                <span href="\\#">
+                    <i class="icon-star icon-medium star" data-bind="click: select" data-id="#: id #"></i>
+                    <i class="icon-medium">#: likes.count #</i>
+                </span>
+                <div class="pull-right">
+                    <a class="btn" href="#: link #" target="_blank">
+                        <i class="icon-share"> </i>
+                    </a>
+                </div>
+                # if (caption) { #
+                    <div class="padded">
+                        <div class="media">
+                            <div class="media-object pull-left">
+                                <a href="">
+                                    <img src="#: caption.from.profile_picture #" class="thumb img-rounded" alt="" />
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <strong>#: caption.from.username #: </strong>#: caption.text #
+                            </div>
+                        </div>                
+                    </div>
+                # } #
+                    # if (data.comments.count > 0) { #
+                        <hr />
+                        <div>
+                            # $.each(data.comments.data, function(idx, item) {  #
+                                <div class="media">
+                                    <div class="media-object pull-left">
+                                        <a href="">
+                                            <img src="#: item.from.profile_picture #" class="thumb img-rounded" alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <strong>#: item.from.username #: </strong>#: item.text #
+                                    </div>
+                                </div>                
+                            # }); #
+                        </div>
+                    # } #
+                <div class="input-append padded">
+                  <input class="span5 k-textbox" type="text" placeholder="Write a comment...">
+                  <button class="btn" type="button" data-bind="click: comment">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

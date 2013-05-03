@@ -58,6 +58,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=104.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -132,7 +136,6 @@
     <Compile Include="App_Start\AttributeRoutingConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\InstaSharpConfig.cs" />
-    <Compile Include="Controllers\api\BaseController.cs" />
     <Compile Include="Controllers\api\MediaController.cs" />
     <Compile Include="Controllers\api\UsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -311,6 +314,8 @@
     <Content Include="Scripts\app\mylibs\self\self.min.js">
       <DependentUpon>self.coffee</DependentUpon>
     </Content>
+    <Content Include="Scripts\app\mylibs\feed\views\item-template.html" />
+    <Content Include="Scripts\app\mylibs\self\views\item-template.html" />
     <Content Include="Scripts\app\mylibs\self\views\template.html" />
     <Content Include="Scripts\app\mylibs\feed\feed.coffee" />
     <Content Include="Scripts\app\main.coffee" />
@@ -759,15 +764,13 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\Home\Authenticated.cshtml" />
-    <Content Include="Views\Home\Unauthenticated.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

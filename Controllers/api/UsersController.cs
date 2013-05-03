@@ -13,7 +13,7 @@ namespace InstaSharp.Samples.MVC.Controllers.api
 
         public UsersController()
         {
-            _users = new Endpoints.Users(InstaSharpConfig.config, InstaSharpConfig.auth);
+            _users = new Endpoints.Users(InstaSharpConfig.config, InstaSharpConfig.oauthResponse);
         }
 
         [GET("api/users/feed")]
@@ -21,7 +21,7 @@ namespace InstaSharp.Samples.MVC.Controllers.api
 
             var feed = next_max_id == null ? _users.Feed() : _users.Feed(next_max_id);
 
-            return new ContentResult { Content = feed.Json, ContentType = "application/json" };
+            return new ContentResult { Content = feed.Content, ContentType = "application/json" };
 
         }
         [GET("api/users/recent")]
@@ -29,7 +29,7 @@ namespace InstaSharp.Samples.MVC.Controllers.api
 
             var recent = next_max_id == null ? _users.Recent() : _users.Recent(next_max_id);
 
-            return new ContentResult { Content = recent.Json, ContentType = "application/json" };
+            return new ContentResult { Content = recent.Content, ContentType = "application/json" };
         }
 
     }
