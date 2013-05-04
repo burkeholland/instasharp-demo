@@ -7,25 +7,25 @@
 
     maxId = null
 
-    feedTemplate = kendo.template(itemTemplate);
-
-    feed = new kendo.data.DataSource
-        transport:
-            read: "api/users/feed"
-        schema: 
-            parse: (data) ->
-                maxId = data.pagination.next_max_id
-                data
-            data: "data"
-        change: (e) ->
-            $.each e.items, (idx, item) ->
-                $("#feed").append feedTemplate item
-                
-        requestEnd: () ->
-    
-            viewModel.set "loading", false
+    # append the feed template to the DOM
+    $(document.body).append itemTemplate
 
     viewModel = kendo.observable
+
+        feed: new kendo.data.DataSource
+            transport:
+                read: "api/users/feed"
+            schema: 
+                parse: (data) ->
+                    maxId = data.pagination.next_max_id
+                    data
+                data: "data",
+                model: 
+                    id: "id"
+
+            requestEnd: () ->
+    
+                viewModel.set "loading", false
 
         more: ->
         
@@ -44,22 +44,32 @@
                 # turn of the loading animation
                 viewModel.set "loading", false
 
-        loading: true,
+        loading: true
+        liking: false
 
         select: (e) ->
             
+            # show the spinner
+            @set "liking", true
+
             el = $(e.target)
             id = el.data "id"
-            
-            if el.hasClass('selected') 
-                $.delete "api/media/#{id}/like", (data) ->
-                    el.removeClass('selected')
-            else
-                $.post "api/media/#{id}/like", (data) ->
-                    el.addClass('selected')
 
-    view = new kendo.View template, { 
-        model: viewModel,
-        init: ->
-            feed.read()
-    }
+            # get the datasource
+            feed = @get "feed"
+            item = feed.get id
+
+            if el.hasClass('selected') 
+                $.post "api/media/#{id}/like/delete", (data) =>
+                    # decrement the like count for this item
+                    item.likes.count = item.likes.count - 1
+                    el.removeClass('selected')
+                    @set "liking", false
+            else
+                $.post "api/media/#{id}/like", (data) =>
+                    # increment the likdes count
+                    item.likes.count = item.likes.count + 1
+                    el.addClass('selected')
+                    @set "liking", false
+
+    view = new kendo.View template, { model: viewModel }

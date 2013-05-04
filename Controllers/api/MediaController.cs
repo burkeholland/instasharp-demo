@@ -18,21 +18,21 @@ namespace InstaSharp.Samples.MVC.Controllers.api
             _likes = new Endpoints.Likes(InstaSharpConfig.config, InstaSharpConfig.oauthResponse);
         }
 
-        //[POST("api/media/{id}/like")]
-        //public ContentResult Like (string id) {
+        [POST("api/media/{id}/like")]
+        public ContentResult Like(string id) {
 
-        //    //var like = _likes.Post(id);
+            var like = _likes.Post(id);
 
-        //    //return new ContentResult { Content = like, ContentType = "application/json" };
-            
-        //}
+            return new ContentResult { Content = like.Content, ContentType = "application/json" };
 
-        //[DELETE("api/media/{id}/like")]
-        //public ContentResult Delete (string id) {
+        }
 
-        //    //var result = _likes.Delete(id);
+        [POST("api/media/{id}/like/delete")]
+        public ContentResult DeleteLike(string id) {
 
-        //    //return new ContentResult { Content = result.Json, ContentType = "application/json" };
-        //}
+            var result = _likes.Delete(id);
+
+            return new ContentResult { Content = result.Content, ContentType = "application/json" };
+        }
     }
 }

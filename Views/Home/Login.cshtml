@@ -4,7 +4,8 @@
 @{
     // create the auth url
     var scopes = new List<OAuth.Scope>();
-    scopes.Add(OAuth.Scope.Basic);
+    scopes.Add(OAuth.Scope.Likes);
+    scopes.Add(OAuth.Scope.Comments);
 
 
     var link = OAuth.AuthLink(InstaSharpConfig.config.OAuthURI + "/authorize", InstaSharpConfig.config.ClientId,

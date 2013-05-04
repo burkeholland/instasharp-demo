@@ -302,6 +302,13 @@
     <Content Include="Scripts\app\app.min.js">
       <DependentUpon>app.coffee</DependentUpon>
     </Content>
+    <None Include="Scripts\app\libs\kendo\kendo.coffee" />
+    <Content Include="Scripts\app\libs\kendo\kendo.js">
+      <DependentUpon>kendo.coffee</DependentUpon>
+    </Content>
+    <Content Include="Scripts\app\libs\kendo\kendo.min.js">
+      <DependentUpon>kendo.coffee</DependentUpon>
+    </Content>
     <Content Include="Scripts\app\mylibs\self\feed.js">
       <DependentUpon>self.coffee</DependentUpon>
     </Content>

@@ -19,9 +19,6 @@ namespace InstaSharp.Samples.MVC.Controllers
             if (InstaSharpConfig.isAuthenticated) {
                 return View(InstaSharpConfig.oauthResponse.User);
             } else {
-
-                
-
                 return View("Login");
             }
              
