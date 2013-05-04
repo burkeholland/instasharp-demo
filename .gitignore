@@ -78,7 +78,6 @@ publish
 *.Publish.xml
 
 # NuGet Packages Directory
-packages
 
 # Windows Azure Build Output
 csx
