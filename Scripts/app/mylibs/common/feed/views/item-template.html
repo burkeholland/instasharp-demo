@@ -1,0 +1,61 @@
+﻿<script type="text/x-kendo-template" id="feed-template">
+    <div class="row">
+        <div class="span6 well offset3">
+            <div class="thumbnail thumbnail-white">
+                <img src="#: images.standard_resolution.url #" />
+                <div class="caption">
+                    <span href="\\#">
+                        <span class="spinner">
+                            <i class="icon-spinner icon-spin icon-medium"></i>
+                        </span>
+                        <i class="icon-star icon-medium star" data-bind="click: like, star: user_has_liked" data-id="#: id #"></i>
+                        <span class="icon-medium">#: likes.count #</span>
+                    </span>
+                    <div class="pull-right">
+                        <a class="btn" href="#: link #" target="_blank">
+                            <i class="icon-share"> </i>
+                        </a>
+                    </div>
+                    # if (caption) { #
+                        <div class="padded">
+                            <div class="media">
+                                <div class="media-object pull-left">
+                                    <a href="">
+                                        <img src="#: caption.from.profile_picture #" class="thumb img-rounded" alt="" />
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <strong>#: caption.from.username #: </strong>#: caption.text #
+                                </div>
+                            </div>                
+                        </div>
+                    # } #
+                    <div data-bind="visible: custom.has_comments">
+                        <hr />
+                        <div data-role="listview" data-bind="source: comments.data" data-template="comments-template">
+                                
+                        </div>
+                    </div>
+                    <div class="input-append padded">
+                      <input class="span5 k-textbox" type="text" placeholder="Write a comment...">
+                      <button class="btn" type="button" data-bind="click: comment">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/x-kendo-template" id="comments-template">
+    <div class="media">
+        <div class="media-object pull-left">
+            <a href="">
+                <img src="#: from.profile_picture #" class="thumb img-rounded" alt="" />
+            </a>
+        </div>
+        <div class="media-body">
+            <strong>#: from.username #: </strong>#: text #
+        </div>
+    </div>
+</script>
+
+

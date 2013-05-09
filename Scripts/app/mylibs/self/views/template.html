@@ -1,11 +1,11 @@
 ﻿<div class="row">
     <div class="span6 offset3">
-        <h1>Your Feed</h1>
+        <h1>Your Photos</h1>
         <hr />
     </div>
 </div>
 
-<div id="self"></div>
+<div id="self" data-role="listview" data-bind="source: items" data-template="feed-template"></div>
 
 <div class="row load-more">
     <div class="span6 offset3">

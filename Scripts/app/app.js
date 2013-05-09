@@ -1,7 +1,8 @@
 ﻿(function() {
 
   define(['jquery', 'kendo', 'mylibs/layout/layout', 'mylibs/feed/feed', 'mylibs/self/self'], function($, kendo, layout, feed, self) {
-    var app;
+    var app, currentView;
+    currentView = null;
     app = new kendo.Router({
       init: function() {
         return layout.render('#application');

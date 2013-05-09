@@ -1,19 +1,16 @@
 ﻿@blue: #006dcc;
-@-webkit-keyframes fadeIn {.mixi-frames;}
-@-moz-keyframes fadeIn {.mixi-frames;}
-@-ms-keyframes fadeIn {.mixi-frames;}
-@-o-keyframes fadeIn {.mixi-frames;}
-@keyframes fadeIn {.mixi-frames;}
-
-.mixi-frames () {
-	from {width: 254px;}
-	to {width: 512px;}
-}
 
 .k-listview {
     border: none;
     -webkit-box-shadow: none;
     box-shadow: none;
+}
+
+.feed-image .placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 
 .thumb {
@@ -50,11 +47,6 @@
     padding: 0px;
 }
 
-.fadeIn {
-	animation-name: fadeIn;
-	opacity: 1;
-}
-
 .comment {
     font-size: 1.5em;
 }
@@ -62,3 +54,8 @@
 .padded {
     padding-top: 20px;
 }
+
+.spinner {
+    display: none;
+}
+

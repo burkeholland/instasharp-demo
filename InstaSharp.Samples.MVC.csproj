@@ -165,6 +165,7 @@
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\instasharp-smallish.png" />
     <Content Include="Content\images\instasharp.png" />
+    <Content Include="Content\images\placeholder.jpg" />
     <Content Include="Content\kendo\2013.1.319\Black\editor.png" />
     <Content Include="Content\kendo\2013.1.319\Black\imagebrowser.png" />
     <Content Include="Content\kendo\2013.1.319\Black\loading-image.gif" />
@@ -306,6 +307,8 @@
     <Content Include="Scripts\app\app.min.js">
       <DependentUpon>app.coffee</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\instasharp - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\instasharp - Web Deploy.pubxml" />
     <None Include="Scripts\app\libs\kendo\kendo.coffee" />
     <Content Include="Scripts\app\libs\kendo\kendo.js">
       <DependentUpon>kendo.coffee</DependentUpon>
@@ -313,26 +316,26 @@
     <Content Include="Scripts\app\libs\kendo\kendo.min.js">
       <DependentUpon>kendo.coffee</DependentUpon>
     </Content>
-    <Content Include="Scripts\app\mylibs\self\feed.js">
-      <DependentUpon>self.coffee</DependentUpon>
+    <Content Include="Scripts\app\mylibs\common\feed\feed.js">
+      <DependentUpon>feed.coffee</DependentUpon>
     </Content>
-    <Content Include="Scripts\app\mylibs\self\feed.min.js">
-      <DependentUpon>self.coffee</DependentUpon>
+    <Content Include="Scripts\app\mylibs\common\feed\feed.min.js">
+      <DependentUpon>feed.coffee</DependentUpon>
     </Content>
+    <Content Include="Scripts\app\mylibs\common\feed\views\item-template.html" />
     <Content Include="Scripts\app\mylibs\self\self.js">
       <DependentUpon>self.coffee</DependentUpon>
     </Content>
     <Content Include="Scripts\app\mylibs\self\self.min.js">
       <DependentUpon>self.coffee</DependentUpon>
     </Content>
-    <Content Include="Scripts\app\mylibs\feed\views\item-template.html" />
-    <Content Include="Scripts\app\mylibs\self\views\item-template.html" />
     <Content Include="Scripts\app\mylibs\self\views\template.html" />
     <Content Include="Scripts\app\mylibs\feed\feed.coffee" />
     <Content Include="Scripts\app\main.coffee" />
     <Content Include="Scripts\app\app.coffee" />
     <Content Include="Scripts\app\mylibs\feed\views\template.html" />
     <Content Include="Scripts\app\mylibs\layout\layout.coffee" />
+    <Content Include="Scripts\app\mylibs\common\feed\feed.coffee" />
     <Content Include="Scripts\app\mylibs\self\self.coffee" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\app.js" />
@@ -825,7 +828,6 @@
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
-	<Exec Command=""$(SolutionDir)Tools\NuGet" install "$(ProjectDir)packages.config" -o "$(SolutionDir)packages"" />
   </Target>
   <Target Name="AfterBuild">
   </Target> -->

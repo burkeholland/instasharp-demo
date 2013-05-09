@@ -7,6 +7,8 @@ define [
     'mylibs/self/self'
 ], ($, kendo, layout, feed, self) ->
 
+    currentView = null;
+
     # create a new router and initialize the layout
     app = new kendo.Router 
         init: -> layout.render '#application'
