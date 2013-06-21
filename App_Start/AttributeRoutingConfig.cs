@@ -1,7 +1,7 @@
 using System.Web.Routing;
 using AttributeRouting.Web.Mvc;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(InstaSharp.Samples.MVC.AttributeRoutingConfig), "Start")]
+// [assembly: WebActivator.PreApplicationStartMethod(typeof(InstaSharp.Samples.MVC.AttributeRoutingConfig), "Start")]
 
 namespace InstaSharp.Samples.MVC 
 {
@@ -11,9 +11,9 @@ namespace InstaSharp.Samples.MVC
 		{    
 			// See http://github.com/mccalltd/AttributeRouting/wiki for more options.
 			// To debug routes locally using the built in ASP.NET development server, go to /routes.axd
-            
+            // register signalr routes
 			routes.MapAttributeRoutes();
-		}
+        }
 
         public static void Start() 
 		{

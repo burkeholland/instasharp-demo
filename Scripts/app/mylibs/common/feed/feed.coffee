@@ -1,8 +1,9 @@
 ﻿define [
     "jquery"
     "kendo"
+    "mylibs/common/comments",
     "text!mylibs/common/feed/views/item-template.html"
-], (jquery, kendo, feedTemplate) -> 
+], (jquery, kendo, comments, feedTemplate) -> 
 
     class Feed
     
@@ -87,16 +88,17 @@
         
                 comment: (e) ->
 
-                    el = $(e.target).closest "input"
+                    el = $(e.target).prev()
                     id = el.data "id"
                     text = el.val()
 
-                    feed = @get "ds"
+                    feed = @get "items"
                     item = feed.get id
 
-                    item.comments.add 
-
-                    $.post "api/media/#{id}/comment", (data) =>
+                    comments.post(id, text).then((data) ->
+                        # the comment was posted. But did it work?
+                        item.comments.push { profile_picture: APP.user.profile_picture, username: APP.user.username }
+                    )
 
             # append the template to the dom if it doesn't exist already
             if $("#feed-template").length == 0 then $(document.body).append feedTemplate

@@ -7,22 +7,36 @@ using System.Web;
 
 namespace InstaSharp.Samples.MVC
 {
-    public static class InstaSharpConfig
+    public sealed class InstaSharpConfig
     {
 
-        public static bool isAuthenticated = false;
-        public static InstaSharp.InstagramConfig config;
-        public static InstaSharp.Models.Responses.OAuthResponse oauthResponse;
+        public bool isAuthenticated = false;
+        public InstaSharp.InstagramConfig config;
+        public InstaSharp.Models.Responses.OAuthResponse oauthResponse;
 
-        public static void Set(HttpContext context)
+        static readonly InstaSharpConfig _instance = new InstaSharpConfig();
+
+        public static InstaSharpConfig Instance {
+            get {
+                string name = "singleton";
+                if (HttpContext.Current.Session[name] == null) 
+                HttpContext.Current.Session[name] = new InstaSharpConfig(); 
+                return (InstaSharpConfig)HttpContext.Current.Session[name]; 
+            } 
+        }
+
+        public void Set(HttpContext context)
         {
             // check if we are authenticated already and for the auth object
             if (context.Session["InstaSharp.Authenticated"] != null) {
-                isAuthenticated = (bool)context.Session["InstaSharp.Authenticated"];
+                isAuthenticated = false; // (bool)context.Session["InstaSharp.Authenticated"];
 
                 if (isAuthenticated)
                 {
                     oauthResponse = (OAuthResponse)context.Session["InstaSharp.AuthInfo"];
+
+                    // if we are authenticated, then we need to check and see if there is a corresponding
+                    // signalr clientid registered in the database
                 }
             }
 

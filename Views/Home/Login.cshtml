@@ -7,9 +7,10 @@
     scopes.Add(OAuth.Scope.Likes);
     scopes.Add(OAuth.Scope.Comments);
 
+    var instance = InstaSharpConfig.Instance;
 
-    var link = OAuth.AuthLink(InstaSharpConfig.config.OAuthURI + "/authorize", InstaSharpConfig.config.ClientId,
-    InstaSharpConfig.config.RedirectURI, scopes, OAuth.ResponseType.Code);
+    var link = OAuth.AuthLink(instance.config.OAuthURI + "/authorize", instance.config.ClientId,
+    instance.config.RedirectURI, scopes, OAuth.ResponseType.Code);
 }
 
 <!DOCTYPE html>
@@ -20,13 +21,14 @@
     <title>InstaSharp</title>
      @Styles.Render("~/Content/bootstrap.min.css")
      @Styles.Render("~/Content/bootstrap-responsive.min.css")
+     @Styles.Render("~/Content/flat-ui.css")
 </head>
 <body>
   
     <div class="container">
          <div class="hero-unit">
-            <h2>Athenticate Thyself</h2>
-            <a href="@link" class="button">Authenticate To Instagram</a>
+            <h1>Athenticate Thyself</h1>
+            You need to <a href="@link" class="button">authenticate</a> with Instagram please and thank you.
         </div>
     </div>
 

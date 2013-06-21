@@ -1,5 +1,5 @@
 ﻿using AttributeRouting.Web.Mvc;
-using InstaSharp.Models;
+using Microsoft.AspNet.SignalR;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -12,19 +12,20 @@ namespace InstaSharp.Samples.MVC.Controllers
 {
     public class HomeController : Controller
     {
+
+        
+
         [GET("/")]
         public ActionResult Index()
         {
             // if we're authenticated, return the user object with the original request
-            if (InstaSharpConfig.isAuthenticated) {
-                return View(InstaSharpConfig.oauthResponse.User);
+            if (InstaSharpConfig.Instance.isAuthenticated) {
+                return View(InstaSharpConfig.Instance.oauthResponse.User);
             } else {
                 return View("Login");
             }
              
         }
-
-
 
         [GET("/clear")]
         public ActionResult Clear()

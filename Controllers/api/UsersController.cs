@@ -13,10 +13,17 @@ namespace InstaSharp.Samples.MVC.Controllers.api
 
         public UsersController()
         {
-            _users = new Endpoints.Users(InstaSharpConfig.config, InstaSharpConfig.oauthResponse);
+            _users = new Endpoints.Users(InstaSharpConfig.Instance.config, InstaSharpConfig.Instance.oauthResponse);
         }
 
-        [GET("api/users/feed")]
+        [GET("api/users/{id}")]
+        public ContentResult UserInfo(string id) {
+            var user = string.IsNullOrEmpty(id) ? _users.Get() : _users.Get(id);
+
+            return new ContentResult { Content = user.Content, ContentType = "application/json" };
+        }
+
+        [GET("api/self/feed")]
         public ContentResult Feed(string next_max_id) {
 
             var feed = next_max_id == null ? _users.Feed() : _users.Feed(next_max_id);
@@ -24,13 +31,21 @@ namespace InstaSharp.Samples.MVC.Controllers.api
             return new ContentResult { Content = feed.Content, ContentType = "application/json" };
 
         }
-        [GET("api/users/recent")]
-        public ContentResult Recent(string next_max_id) {
+        [GET("api/self/recent")]
+        public ContentResult RecentSelf(string next_max_id) {
 
-            var recent = next_max_id == null ? _users.Recent() : _users.Recent(next_max_id);
+            var recent = next_max_id == null ? _users.RecentSelf() : _users.RecentSelf(next_max_id);
 
             return new ContentResult { Content = recent.Content, ContentType = "application/json" };
         }
 
+        [GET("api/users/{id}/recent")]
+        public ContentResult Recent(string id) {
+
+            var recent = _users.Recent(id);
+
+            return new ContentResult { Content = recent.Content, ContentType = "application/json" };
+
+        }
     }
 }

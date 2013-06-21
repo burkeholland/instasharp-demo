@@ -25,35 +25,53 @@
                                     </a>
                                 </div>
                                 <div class="media-body">
-                                    <strong>#: caption.from.username #: </strong>#: caption.text #
+                                    <a href="\\\#/users/#: caption.from.id #"><strong>#: caption.from.username #:</a> </strong>#: caption.text #
+                                </div>
+                            </div>                
+                        </div>
+                    # } else { #
+                        <div class="padded">
+                            <div class="media">
+                                <div class="media-object pull-left">
+                                    <a href="">
+                                        <img src="#: user.profile_picture #" class="thumb img-rounded" alt="" />
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <a href="\\\#/users/#: user.id #"><strong>#: user.username #</a></strong>
                                 </div>
                             </div>                
                         </div>
                     # } #
-                    <div data-bind="visible: custom.has_comments">
-                        <hr />
+                    <div>
                         <div data-role="listview" data-bind="source: comments.data" data-template="comments-template">
                                 
                         </div>
                     </div>
-                    <div class="input-append padded">
-                      <input class="span5 k-textbox" type="text" placeholder="Write a comment...">
-                      <button class="btn" type="button" data-bind="click: comment">Submit</button>
-                    </div>
+                    <div class="input-append padded row">
+                        <div class="span5">
+                            <input class="new-comment span5" data-id="#: id #" type="text" placeholder="Write a comment...">
+                            <button class="btn" type="button" data-bind="click: comment">Submit</button>                      
+                        </div>
+                    </div>                    
                 </div>
             </div>
         </div>
     </div>
 </script>
 <script type="text/x-kendo-template" id="comments-template">
-    <div class="media">
-        <div class="media-object pull-left">
-            <a href="">
-                <img src="#: from.profile_picture #" class="thumb img-rounded" alt="" />
-            </a>
-        </div>
-        <div class="media-body">
-            <strong>#: from.username #: </strong>#: text #
+    <div class="padded">
+        <div>
+            <div class="media">
+                <div class="media-object pull-left">
+                    <a href="">
+                        <img src="#: from.profile_picture #" class="thumb img-rounded" alt="" />
+                    </a>
+                </div>
+                <div class="media-body">
+                    <a href="\\\#/users/#: from.id #"><strong>#: from.username #: </strong></a>#: text #
+                </div>
+            </div>
         </div>
     </div>
 </script>

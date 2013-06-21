@@ -11,11 +11,12 @@
     @Styles.Render("~/Content/kendo/2013.1.319/kendo.common.min.css")
     @Styles.Render("~/Content/kendo/2013.1.319/kendo.bootstrap.min.css")
     @Styles.Render("~/Content/font-awesome.min.css")
+    @Styles.Render("~/Content/flat-ui.css")
     @Styles.Render("~/Content/style.css")
 </head>
 <body>
    
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-fixed-top navbar-inverse">
         <div class="navbar-inner">
             <div class="container">
                 <a class="brand" href="#">
@@ -36,6 +37,7 @@
 						    </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="https://instagram.com/accounts/edit/" target="_blank">Profile</a></li>
+                                <li><a href="#/">Your Feed</a></li>
                                 <li><a href="#/self">Your Photos</a></li>
                             </ul>
                         </li>
@@ -46,6 +48,20 @@
     </div>
 
     <div id="application"></div>
+
+    <script>
+
+        // we get a user object back on load. cheat and put this in memory for later
+        (function() {
+            var APP = window.APP || {};
+            APP.user = {
+                username: "@Model.Username",
+                profile_picture: "@Model.Profile_Picture",
+                id: "@Model.Id"
+            };
+        }())
+
+    </script>
 
     <script src="@Url.Content("~/Scripts/require.js")" data-main="@Url.Content("~/Scripts/app/main.js")"></script>
 

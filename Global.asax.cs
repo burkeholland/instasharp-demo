@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Telerik.Everlive.Sdk.Core;
 
 namespace InstaSharp.Samples.MVC
 {
@@ -20,8 +21,12 @@ namespace InstaSharp.Samples.MVC
 
             // WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+
+            RouteTable.Routes.MapHubs();
+
             // RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
             AttributeRoutingConfig.Start();
         }
 
@@ -29,9 +34,9 @@ namespace InstaSharp.Samples.MVC
         {
             //Session is Available here
             HttpContext context = HttpContext.Current;
-
+           
             if (context.Session != null) {
-                InstaSharpConfig.Set(context);
+                InstaSharpConfig.Instance.Set(context);
             }
         }
     }

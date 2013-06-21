@@ -1,6 +1,6 @@
 ﻿(function() {
 
-  define(["jquery", "kendo", "text!mylibs/common/feed/views/item-template.html"], function(jquery, kendo, feedTemplate) {
+  define(["jquery", "kendo", "mylibs/common/comments", "text!mylibs/common/feed/views/item-template.html"], function(jquery, kendo, comments, feedTemplate) {
     var Feed;
     return Feed = (function() {
 
@@ -74,15 +74,18 @@
             }
           },
           comment: function(e) {
-            var el, feed, id, item, text,
-              _this = this;
-            el = $(e.target).closest("input");
+            var el, feed, id, item, text;
+            el = $(e.target).prev();
             id = el.data("id");
             text = el.val();
-            feed = this.get("ds");
+            feed = this.get("items");
             item = feed.get(id);
-            item.comments.add;
-            return $.post("api/media/" + id + "/comment", function(data) {});
+            return comments.post(id, text).then(function(data) {
+              return item.comments.push({
+                profile_picture: APP.user.profile_picture,
+                username: APP.user.username
+              });
+            });
           }
         });
         if ($("#feed-template").length === 0) {

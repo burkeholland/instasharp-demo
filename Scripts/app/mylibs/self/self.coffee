@@ -5,6 +5,17 @@
     "text!mylibs/self/views/template.html"
 ], (jquery, kendo, Feed, template) -> 
     
-    Timeline = new Feed "api/users/recent"    
+    view = null
 
-    view = new kendo.View template, { model: Timeline.viewModel, init: Timeline.viewModel.ds.read() }
+    {
+        init: (url) ->
+
+            if view is null 
+                Timeline = new Feed url    
+                view = new kendo.View template, { 
+                    model: Timeline.viewModel, 
+                    init: Timeline.viewModel.ds.read() 
+                }
+            else
+                return view
+    }
