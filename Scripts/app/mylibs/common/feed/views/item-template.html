@@ -2,7 +2,15 @@
     <div class="row">
         <div class="span6 well offset3">
             <div class="thumbnail thumbnail-white">
-                <img src="#: images.standard_resolution.url #" />
+                # if (type === "video") { #
+                    
+                        <video src="#: videos.standard_resolution.url #" controls>
+                            <h2>Your browser doesn't support HTML5 video (mp4) \\\#sadness</h2>
+                        </video>
+                    
+                # } else { #
+                    <img src="#: images.standard_resolution.url #" />
+                # } #
                 <div class="caption">
                     <span href="\\#">
                         <span class="spinner">
