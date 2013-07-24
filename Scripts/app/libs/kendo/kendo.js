@@ -1,6 +1,6 @@
 ﻿(function() {
 
-  define(["../kendo/2013.1.319/kendo.core.min", "../kendo/2013.1.319/kendo.data.min", "../kendo/2013.1.319/kendo.binder.min", "../kendo/2013.1.319/kendo.router.min", "../kendo/2013.1.319/kendo.view.min", "../kendo/2013.1.319/kendo.listview.min", "../kendo/2013.1.319/kendo.tooltip.min", "../kendo/2013.1.319/kendo.fx.min"], function() {
+  define(["../kendo/2013.2.716/kendo.core.min", "../kendo/2013.2.716/kendo.data.min", "../kendo/2013.2.716/kendo.binder.min", "../kendo/2013.2.716/kendo.router.min", "../kendo/2013.2.716/kendo.view.min", "../kendo/2013.2.716/kendo.listview.min", "../kendo/2013.2.716/kendo.tooltip.min", "../kendo/2013.2.716/kendo.fx.min"], function() {
     kendo.data.binders.star = kendo.data.Binder.extend({
       refresh: function() {
         var value;
