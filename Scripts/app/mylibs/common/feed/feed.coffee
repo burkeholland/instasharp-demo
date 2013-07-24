@@ -42,7 +42,6 @@
 
                 more: =>
         
-                    # toggle the loading flag
                     @viewModel.set "loading", true
 
                     @viewModel.get("ds").read()
