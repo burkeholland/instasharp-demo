@@ -1,8 +1,21 @@
-﻿<div class="row hero-unit">
-    <div id="user"></div>
+﻿<div data-bind="visible: user">
+    <div class="row hero-unit">
+        <div id="user"></div>
+    </div>
+    <div class="row">
+        <h1>Recent Pictures</h1>
+        <ul class="thumbnails" data-auto-bind="fase" data-role="listview" data-bind="source: data.recent" data-template="users-template"></ul>
+    </div>
 </div>
-<div class="row">
-    <h1>Recent Pictures</h1>
-    <ul class="thumbnails" data-auto-bind="fase" data-role="listview" data-bind="source: data.recent" data-template="users-template"></ul>
+<div class="row" data-bind="visible: error">
+    <div class="span2 offset2">
+        <i class="icon-frown icon-huge"></i>
+    </div>
+    <div class="span8">
+        <h2 class="private">Unfortunately, this user's account is private.</h2>
+    </div>
+    
+    
 </div>
+
 
